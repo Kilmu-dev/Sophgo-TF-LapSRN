@@ -1,7 +1,7 @@
 import bmnett
 ## compile fp32 model
 bmnett.compile(
-    model = "../../export/LapSRN_x8.pb",     ## Necessary
+    model = "/workspace/work/lapsrn/Sophgo-TF-LapSRN/export/LapSRN_x8.pb",     ## Necessary
     outdir = "/fp32bmodel",                    ## Necessary
     target = "BM1684",                ## Necessary
     shapes = [[3,3,1,64]],     ## Necessary
