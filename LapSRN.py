@@ -25,7 +25,7 @@ class LapSRN:
         return tf.nn.relu(layer) - 0.2 * tf.nn.relu(-1 * layer)
 
     def conv_layer(self, input_layer, filter, bias, name):
-        conv_layer = tf.nn.conv2d(input=input_layer, filter=filter, strides=[1, 1, 1, 1], padding='SAME')
+        conv_layer = tf.keras.layers.Conv2D(input=input_layer, filter=filter, strides=[1, 1, 1, 1], padding='SAME')
         conv_layer = self.activation(conv_layer + bias)
         return conv_layer
 
@@ -37,7 +37,7 @@ class LapSRN:
                                                                           (current_scale * current_scale))),
                              name=filter_name)
 
-        deconv_layer = tf.nn.conv2d(input=input_layer, filter=filter, strides=[1, 1, 1, 1], padding='SAME',
+        deconv_layer = tf.keras.layers.Conv2D(input=input_layer, filter=filter, strides=[1, 1, 1, 1], padding='SAME',
                                     data_format='NHWC')
         deconv_layer = tf.nn.depth_to_space(deconv_layer, current_scale, data_format='NHWC')
 
